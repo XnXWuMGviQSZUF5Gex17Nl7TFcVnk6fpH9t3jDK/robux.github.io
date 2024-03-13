@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roblox Fee Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 400px;
+        margin: auto;
+    }
+    input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        box-sizing: border-box;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Roblox Fee Calculator</h2>
+    <label for="desiredAmount">Desired Amount (after fee):</label>
+    <input type="number" id="desiredAmount" placeholder="Enter desired amount...">
+    <button onclick="calculateAmount()">Calculate</button>
+    <p id="result"></p>
+</div>
+
+<script>
+    function calculateAmount() {
+        var desiredAmount = parseFloat(document.getElementById("desiredAmount").value);
+        if (!isNaN(desiredAmount)) {
+            var amountBeforeFee = Math.ceil(desiredAmount / (1 - 0.3));
+            document.getElementById("result").innerHTML = "To achieve " + desiredAmount + " after the fee, you need to pay " + amountBeforeFee + " (before the fee).";
+        } else {
+            document.getElementById("result").innerHTML = "Please enter a valid number.";
+        }
+    }
+</script>
+
+</body>
+</html>
